@@ -79,7 +79,7 @@ window.initMap = () => {
   self.map = new google.maps.Map(document.getElementById('map'), {
     zoom: 12,
     center: loc,
-    scrollwheel: true
+    scrollwheel: false
   });
 
   google.maps.event.addDomListener(window, 'resize', function () {
@@ -181,22 +181,11 @@ createRestaurantHTML = (restaurant, tabIndex) => {
 addMarkersToMap = (restaurants = self.restaurants) => {
   restaurants.forEach(restaurant => {
     // Add marker to the map
-    const marker = DBHelper.mapMarkerForRestaurant(restaurant, self.newMap);
-    google.maps.event.addListener(maker, 'click', () => {
-      window.location.href = maker.url
-    });
-    self.markers.push(marker);
-  });
-
-} 
-/* addMarkersToMap = (restaurants = self.restaurants) => {
-  restaurants.forEach(restaurant => {
-    // Add marker to the map
     const marker = DBHelper.mapMarkerForRestaurant(restaurant, self.map);
     google.maps.event.addListener(marker, 'click', () => {
       window.location.href = marker.url
     });
     self.markers.push(marker);
   });
-} */
+} 
 
